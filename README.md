@@ -153,10 +153,152 @@ Before running this application, ensure the following are installed:
 - [**MongoDB**](https://www.mongodb.com/)
 
 ---
-
 ## ⚡ Installation & Setup
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd Exam_Web
+Follow these steps to get your local development environment up and running.
+
+### 1. Clone the Repository
+
+Start by cloning the project and navigating into the main directory:
+
+```bash
+git clone <repository-url>
+cd Exam_Web
+````
+
+### 2\. Install Dependencies
+
+Install the required packages for both the backend (`server`) and the frontend (`client`).
+
+**Backend Dependencies (Node.js/Express):**
+
+```bash
+cd server
+npm install
+```
+
+**Frontend Dependencies (React/Vite):**
+
+```bash
+cd ../client
+npm install
+```
+
+### 3\. Configure Environment Variables
+
+Create a file named **`.env`** inside the `/server` directory and add the following configuration.
+
+**`/server/.env` File:**
+
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/exam_web
+JWT_SECRET=your_jwt_secret_key
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_email_password
+FRONTEND_URL=http://localhost:5173
+```
+
+> 💡 **Tip:** For production, use secure environment variables and consider robust services like **SendGrid** or **Mailgun** for email.
+
+-----
+
+## ▶️ Running the Application
+
+### Development Mode
+
+Run the frontend and backend servers concurrently for development with hot-reloading.
+
+| Service | Command | Status |
+| :--- | :--- | :--- |
+| **Backend** | `cd server && npm run dev` | 🟢 `http://localhost:5000` |
+| **Frontend** | `cd client && npm run dev` | 🟢 `http://localhost:5173` |
+
+### Production Mode
+
+To run the application in a production-ready environment:
+
+1.  **Build the Frontend:**
+
+    ```bash
+    cd client
+    npm run build
+    ```
+
+2.  **Start the Backend (serves the built frontend):**
+
+    ```bash
+    cd ../server
+    npm start
+    ```
+
+-----
+
+## 📂 Project Structure
+
+The project follows a standard monorepo structure, separating the client and server.
+
+```
+Exam_Web/
+├── client/                 # React Frontend (Vite)
+│   ├── public/
+│   ├── src/
+│   │   ├── components/     # Reusable UI components
+│   │   ├── context/        # Global state management
+│   │   ├── layouts/        # Page structure (e.g., student/teacher layout)
+│   │   ├── pages/          # Individual pages
+│   │   │   ├── auth/       # Login, Register
+│   │   │   ├── public/     # Homepage
+│   │   │   ├── student/    # Student specific pages (exams, results)
+│   │   │   └── teacher/    # Teacher specific pages (create exam, manage users)
+│   │   ├── utils/          # Helper functions
+│   │   └── assets/
+│   └── vite.config.js
+│
+└── server/                 # Node.js Backend (Express)
+    ├── src/
+    │   ├── config/         # Database connection, environment setup
+    │   ├── controllers/    # Business logic for routes
+    │   ├── middleware/     # JWT authentication, error handling
+    │   ├── models/         # Mongoose schemas
+    │   ├── routes/         # API endpoints
+    │   └── server.js       # Application entry point
+    └── package.json
+```
+
+-----
+
+## 🤝 Contributing
+
+We welcome contributions\! To contribute to this project:
+
+1.  **Fork** the repository.
+2.  Create your feature branch:
+    ```bash
+    git checkout -b feature/AmazingFeature
+    ```
+3.  Commit your changes:
+    ```bash
+    git commit -m "feat: Add some AmazingFeature"
+    ```
+4.  Push to the branch and **open a Pull Request**:
+    ```bash
+    git push origin feature/AmazingFeature
+    ```
+
+-----
+
+## 📄 License
+
+This project is licensed under the **ISC License**. See the `LICENSE` file for details.
+
+-----
+
+## 📞 Support
+
+For support, inquiries, or bug reports:
+
+  * 📧 **Email** the development team directly.
+  * 💬 Or, create an **issue** in this GitHub repository.
+
+<!-- end list -->
