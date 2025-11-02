@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken } from './helpers';
 
 const api = axios.create({
-  baseURL: "https://exam-web-server.onrender.com", // Placeholder API base URL
+  baseURL: "https://exam-web-server.onrender.com/api", // Placeholder API base URL
 });
 
 // Request interceptor to add JWT token to headers
@@ -31,4 +31,5 @@ api.interceptors.response.use(
 );
 
 export default api;
+
 
