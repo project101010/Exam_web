@@ -16,6 +16,8 @@ const PORT = process.env.PORT || 5000;
 
 // middleware
 app.use(express.json());
+app.use(cors({ origin: 'https://exam-web-client.onrender.com',credentials: true,}));
+
 app.use(cors({}));
 
 // Serve static files from uploads directory
@@ -49,4 +51,5 @@ connectDB().then(() => {
 }).catch((error) => {
   console.error("Failed to start server:", error);
 });
+
     
